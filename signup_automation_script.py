@@ -1,18 +1,17 @@
 import time
-import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-
 
 driver = webdriver.Chrome()
 driver.get("https://authorized-partner.vercel.app/")
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 10)
+
+# Set up your Account
+
 driver.find_element(By.XPATH, "//button[normalize-space()='Get Started']").click()
 wait.until(
     EC.element_to_be_clickable((By.ID, "remember"))
@@ -39,12 +38,16 @@ wait.until(
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Next']"))
 ).click()
+otp = input("Enter OTP: ")
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//input[@class='disabled:cursor-not-allowed']"))
-).send_keys("966113")
+).send_keys("otp")
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Verify Code']"))
 ).click()
+
+# Agency Details
+
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter Agency Name']"))
 ).send_keys("ABC Agency")
@@ -64,16 +67,16 @@ wait.until(
     EC.presence_of_element_located((By.XPATH, "//span[normalize-space()='Nepal']"))
 ).click()
 wait.until(
-    EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Next']"))
+    EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Next']"))
 ).click()
 
 # Professional Experience
 
 wait.until(
-    EC.presence_of_element_located((By.XPATH, "//button[@role='combobox']"))
+    EC.element_to_be_clickable((By.XPATH, "//button[@role='combobox']"))
 ).click()
 wait.until(
-    EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Next']"))
+    EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Next']"))
 ).click()
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter an approximate number.']"))
@@ -97,7 +100,40 @@ wait.until(
     EC.presence_of_element_located((By.XPATH, "//div//div//div//div//div//div//div//div[4]//button[1]"))
 ).click()
 wait.until(
-    EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Next']"))
+    EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Next']"))
+).click()
+
+# Verification and Preferences
+
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter your registration number']"))
+).send_keys("QA12345")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//button[@role='combobox']"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//span[normalize-space()='Nepal']"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//body[1]/div[4]/div[4]/div[1]/div[1]/div[1]/div[2]/form[1]/div[2]/div[1]/div[2]/div[1]/button[1]"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='E.g., ICEF Certified Education Agent']"))
+).send_keys("ICEF Certified Education Agent")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//div//div//div//div//div//div//div[1]//div[1]//div[1]//div[1]//span[1]"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@type='file']"))
+).send_keys(r"C:\Users\duwal\Downloads\download.jpg")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//div//div//div//div//div//div//div[2]//div[1]//div[1]//div[1]//span[1]"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@type='file']"))
+).send_keys(r"C:\Users\duwal\Downloads\download (1).jpg")
+wait.until(
+    EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Submit']"))
 ).click()
 time.sleep(2)
 
