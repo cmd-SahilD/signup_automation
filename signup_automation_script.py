@@ -66,6 +66,39 @@ wait.until(
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Next']"))
 ).click()
+
+# Professional Experience
+
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//button[@role='combobox']"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Next']"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter an approximate number.']"))
+).send_keys("500")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='E.g., Undergraduate admissions to Canada.']"))
+).send_keys("Undergraduate admission to Canada")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='E.g., 90% ']"))
+).send_keys("90")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//div//div//div//div//div//div//div//div//div[1]//button[1]"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//div//div//div//div//div//div//div//div//div[2]//button[1]"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//div//div//div//div//div//div//div//div[3]//button[1]"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//div//div//div//div//div//div//div//div[4]//button[1]"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Next']"))
+).click()
 time.sleep(2)
 
 
