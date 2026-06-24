@@ -58,8 +58,11 @@ wait.until(
     EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Agency Website']"))
 ).send_keys("https://test.com")
 wait.until(
-    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter Your Agency Address']"))
-).send_keys("Bhaktapur, Nepal")
+    EC.presence_of_element_located((By.XPATH, "//span[@class='font-satoshi-regular text-translucent']"))
+).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//span[normalize-space()='Nepal']"))
+).click()
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Next']"))
 ).click()
