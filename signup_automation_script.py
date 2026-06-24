@@ -10,7 +10,7 @@ driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 10)
 
-# Set up your Account
+### Set up your Account
 
 driver.find_element(By.XPATH, "//button[normalize-space()='Get Started']").click()
 wait.until(
@@ -41,12 +41,12 @@ wait.until(
 otp = input("Enter OTP: ")
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//input[@class='disabled:cursor-not-allowed']"))
-).send_keys("otp")
+).send_keys(otp)
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Verify Code']"))
 ).click()
 
-# Agency Details
+### Agency Details
 
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter Agency Name']"))
@@ -70,7 +70,7 @@ wait.until(
     EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Next']"))
 ).click()
 
-# Professional Experience
+### Professional Experience
 
 wait.until(
     EC.element_to_be_clickable((By.XPATH, "//button[@role='combobox']"))
@@ -103,7 +103,7 @@ wait.until(
     EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Next']"))
 ).click()
 
-# Verification and Preferences
+### Verification and Preferences
 
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter your registration number']"))
@@ -120,18 +120,20 @@ wait.until(
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//input[@placeholder='E.g., ICEF Certified Education Agent']"))
 ).send_keys("ICEF Certified Education Agent")
-wait.until(
+first_upload_span = wait.until(
     EC.presence_of_element_located((By.XPATH, "//div//div//div//div//div//div//div[1]//div[1]//div[1]//div[1]//span[1]"))
-).click()
-wait.until(
-    EC.presence_of_element_located((By.XPATH, "//input[@type='file']"))
-).send_keys(r"C:\Users\duwal\Downloads\download.jpg")
-wait.until(
+)
+first_upload_span.click()
+file_inputs = driver.find_elements(By.XPATH, "//input[@type='file']")
+file_inputs[0].send_keys(r"C:\Users\duwal\Downloads\download.jpg")
+
+second_upload_span = wait.until(
     EC.presence_of_element_located((By.XPATH, "//div//div//div//div//div//div//div[2]//div[1]//div[1]//div[1]//span[1]"))
-).click()
-wait.until(
-    EC.presence_of_element_located((By.XPATH, "//input[@type='file']"))
-).send_keys(r"C:\Users\duwal\Downloads\download (1).jpg")
+)
+second_upload_span.click()
+file_inputs = driver.find_elements(By.XPATH, "//input[@type='file']")
+file_inputs[1].send_keys(r"C:\Users\duwal\Downloads\download (1).jpg")
+
 wait.until(
     EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Submit']"))
 ).click()
