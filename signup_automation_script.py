@@ -45,6 +45,24 @@ wait.until(
 wait.until(
     EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Verify Code']"))
 ).click()
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter Agency Name']"))
+).send_keys("ABC Agency")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter Your Role in Agency']"))
+).send_keys("QA Engineer")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter Your Agency Email Address']"))
+).send_keys("qa@test.com")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Agency Website']"))
+).send_keys("https://test.com")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Enter Your Agency Address']"))
+).send_keys("Bhaktapur, Nepal")
+wait.until(
+    EC.presence_of_element_located((By.XPATH, "//button[normalize-space()='Next']"))
+).click()
 time.sleep(2)
 
 
